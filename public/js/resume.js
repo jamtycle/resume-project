@@ -17,6 +17,28 @@ function createBubbles(bubbleQuantity) {
 
             container.appendChild(hugger);
         }
+
+        var percent_container = document.createElement("div");
+        percent_container.id = "percent-indicator";
+        percent_container.style.display = "flex";
+        percent_container.style.position = "absolute";
+        percent_container.style.top = -1;
+        percent_container.style.left = -2;
+        percent_container.style.width = "100%";
+        percent_container.style.height = "10px";
+        for (let i = 0; i < 10; i++) {
+            var percent = document.createElement("div");
+            percent.style.border = "0.1px solid black";
+            if (i > 0 || i < 10) percent.style.borderWidth = "0.1px 0px 0.1px 0.1px";
+            if (i == 0) percent.style.borderRadius = "20px 0px 0px 20px";
+            if (i == 10) percent.style.borderRadius = "0px 20px 20px 0px";
+            percent.style.width = "10%";
+            percent.style.height = "10px";
+            percent_container.appendChild(percent);
+        }
+
+        var progress_bar = container.parentElement;
+        progress_bar.appendChild(percent_container);
     })
 }
 
@@ -24,8 +46,8 @@ function createBubbles(bubbleQuantity) {
 //     createBubbles(20);
 // })
 
-document.addEventListener("readystatechange", () => {
-    createBubbles(20);
+document.addEventListener("DOMContentLoaded", () => {
+    createBubbles(10);
     changePanelBorder();
 });
 
